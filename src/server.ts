@@ -4,9 +4,9 @@ import getApeTrends from "ape-trends";
 const app = express();
 
 app.get("/", async (request, response) => {
-  const apeTrends = await getApeTrends();
+  const apeTrends = await getApeTrends({ limits: { depth: "25%" } });
   response.header("Access-Control-Allow-Origin", "*");
   response.send(apeTrends);
 });
 
-app.listen(5000);
+app.listen(process.env.PORT ?? 5000);
